@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -27,36 +28,40 @@ function EvaluacionForm() {
   const estiloInput = {
     width: "100%",
     padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #ccd5dc",
+    borderRadius: "9px",
+    border: "1px solid #d5e0e5",
     boxSizing: "border-box",
     marginTop: "8px",
-    fontSize: "15px"
+    fontSize: "15px",
+    backgroundColor: "#f8fbfc"
   };
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       style={{
-        backgroundColor: "white",
-        padding: "22px",
-        borderRadius: "14px",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-        marginBottom: "25px"
+        background: "linear-gradient(135deg, #fff0e7, #fff8e9)",
+        border: "1px solid #f3d4bd",
+        padding: "25px",
+        borderRadius: "20px",
+        marginBottom: "28px",
+        boxShadow: "0 6px 18px rgba(30,60,80,0.06)"
       }}
     >
-      <h2 style={{ color: "#183b56", marginTop: 0 }}>
-        Autoevaluación
+      <h2 style={{ color: "#a64b16", marginTop: 0 }}>
+        📝 Autoevaluación
       </h2>
 
-      <p style={{ color: "#5c6770" }}>
-        Reflexiona sobre tu participación en el proyecto Feria del Producto.
+      <p style={{ color: "#687781", lineHeight: "1.6" }}>
+        Reflexiona sobre tu participación y los aprendizajes obtenidos durante
+        el desarrollo de la Feria del Producto.
       </p>
 
       <form onSubmit={manejarEnvio}>
-        <label style={{ fontWeight: "bold" }}>
+        <label style={{ display: "block", fontWeight: "bold" }}>
           ¿Cómo consideras que fue tu participación?
+
           <select
             name="participacion"
             value={respuestas.participacion}
@@ -75,9 +80,10 @@ function EvaluacionForm() {
         <label style={{
           display: "block",
           fontWeight: "bold",
-          marginTop: "18px"
+          marginTop: "20px"
         }}>
           ¿Qué aprendiste durante el proyecto?
+
           <textarea
             name="aprendizaje"
             value={respuestas.aprendizaje}
@@ -92,9 +98,10 @@ function EvaluacionForm() {
         <label style={{
           display: "block",
           fontWeight: "bold",
-          marginTop: "18px"
+          marginTop: "20px"
         }}>
           ¿Qué aspecto consideras que puedes mejorar?
+
           <textarea
             name="mejora"
             value={respuestas.mejora}
@@ -109,13 +116,13 @@ function EvaluacionForm() {
         <button
           type="submit"
           style={{
-            backgroundColor: "#e9a23b",
-            color: "#183b56",
+            background: "linear-gradient(90deg, #f4a340, #f27b50)",
+            color: "white",
             border: "none",
-            padding: "12px 20px",
-            borderRadius: "9px",
+            padding: "13px 22px",
+            borderRadius: "10px",
             fontWeight: "bold",
-            marginTop: "18px",
+            marginTop: "20px",
             cursor: "pointer"
           }}
         >
@@ -124,13 +131,19 @@ function EvaluacionForm() {
       </form>
 
       {enviado && (
-        <p style={{
-          color: "#21867a",
-          fontWeight: "bold",
-          marginBottom: 0
+        <div style={{
+          backgroundColor: "#fff3d6",
+          color: "#925019",
+          padding: "13px",
+          borderRadius: "10px",
+          marginTop: "18px"
         }}>
-          ¡Gracias! Tu autoevaluación ha sido registrada en esta sesión.
-        </p>
+          <strong>¡Gracias por completar tu autoevaluación!</strong>
+          <p style={{ marginBottom: 0 }}>
+            Tus respuestas se mantienen solamente en esta sesión y no se han
+            enviado a una base de datos.
+          </p>
+        </div>
       )}
     </motion.section>
   );

@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 function HeaderClase({ tituloTema, descripcion }) {
@@ -7,60 +8,68 @@ function HeaderClase({ tituloTema, descripcion }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       style={{
-        background: "linear-gradient(135deg, #102a43, #176b87)",
+        background: "linear-gradient(120deg, #173f5f, #206a8a, #28a6a1)",
         color: "white",
-        padding: "35px 25px",
-        borderRadius: "18px",
+        padding: "45px 25px",
+        borderRadius: "24px",
         textAlign: "center",
-        marginBottom: "25px"
+        marginBottom: "28px",
+        boxShadow: "0 12px 30px rgba(23,63,95,0.2)"
       }}
     >
+      <div style={{ fontSize: "42px", marginBottom: "8px" }}>
+        🛍️ 🎨 📢
+      </div>
+
       <p style={{
-        color: "#ffd166",
+        color: "#ffe082",
         fontWeight: "bold",
-        letterSpacing: "2px",
-        margin: "0 0 10px"
+        letterSpacing: "3px",
+        fontSize: "13px"
       }}>
-        PROYECTO EDUCATIVO
+        PROYECTO DE MERCADOTECNIA
       </p>
 
       <h1 style={{
-        fontSize: "clamp(28px, 5vw, 42px)",
-        margin: "0 0 12px"
+        fontSize: "clamp(32px, 6vw, 48px)",
+        margin: "10px 0",
+        fontWeight: "900"
       }}>
         {tituloTema}
       </h1>
 
       <p style={{
-        maxWidth: "750px",
+        maxWidth: "720px",
         margin: "auto",
-        lineHeight: "1.6",
-        fontSize: "16px"
+        lineHeight: "1.7",
+        fontSize: "16px",
+        color: "#eafafa"
       }}>
         {descripcion}
       </p>
 
       <div style={{
-        marginTop: "22px",
         display: "flex",
         justifyContent: "center",
         flexWrap: "wrap",
-        gap: "10px"
+        gap: "10px",
+        marginTop: "25px"
       }}>
-        <span style={etiqueta}>4to. Diversificado</span>
-        <span style={etiqueta}>Mercadotecnia</span>
-        <span style={etiqueta}>5 semanas</span>
+        {["4to. Diversificado", "Mercadotecnia", "5 semanas"].map((dato) => (
+          <span key={dato} style={{
+            backgroundColor: "white",
+            color: "#174c67",
+            padding: "9px 16px",
+            borderRadius: "30px",
+            fontWeight: "bold",
+            fontSize: "13px"
+          }}>
+            {dato}
+          </span>
+        ))}
       </div>
     </motion.header>
   );
 }
-
-const etiqueta = {
-  backgroundColor: "rgba(255,255,255,0.15)",
-  padding: "8px 14px",
-  borderRadius: "20px",
-  fontSize: "13px",
-  fontWeight: "bold"
-};
 
 export default HeaderClase;

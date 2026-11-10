@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -10,6 +11,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
 button,
@@ -17,4 +19,20 @@ input,
 textarea,
 select {
   font-family: inherit;
+}
+
+button {
+  transition: filter 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #28a6a1;
+  outline-offset: 3px;
 }

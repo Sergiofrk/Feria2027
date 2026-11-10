@@ -1,75 +1,92 @@
+
 import { motion } from "framer-motion";
 
-function Ejemplos() {
-  const ejemplos = [
-    {
-      titulo: "Producto innovador",
-      descripcion:
-        "Una bebida natural con una combinación diferente de sabores y una presentación atractiva."
-    },
-    {
-      titulo: "Identidad de empresa",
-      descripcion:
-        "Una empresa de alimentos puede utilizar un nombre fácil de recordar, un logotipo llamativo y un eslogan relacionado con su producto."
-    },
-    {
-      titulo: "Publicidad digital",
-      descripcion:
-        "Crear en Canva una publicación que muestre el producto, sus características, el nombre de la empresa y un mensaje que motive a comprar."
-    },
-    {
-      titulo: "Redes sociales",
-      descripcion:
-        "Compartir anuncios digitales en redes sociales para dar a conocer el producto y llegar al público objetivo."
-    }
-  ];
-
+function Ejemplos({ ejemplos = [] }) {
   return (
-    <section style={{
-      marginBottom: "25px"
-    }}>
-      <h2 style={{ color: "#183b56" }}>
-        Ideas y ejemplos para el proyecto
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      style={{
+        background: "#fff7ed",
+        border: "2px solid #fed7aa",
+        borderRadius: "16px",
+        padding: "22px",
+        marginTop: "25px",
+        marginBottom: "25px",
+      }}
+    >
+      <h2
+        style={{
+          color: "#9a3412",
+          fontSize: "1.4rem",
+          marginTop: 0,
+          marginBottom: "8px",
+        }}
+      >
+        💡 Ejemplos para desarrollar las actividades
       </h2>
 
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "15px"
-      }}>
-        {ejemplos.map((ejemplo, index) => (
-          <motion.article
-            key={index}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.12 }}
-            whileHover={{ scale: 1.02 }}
-            style={{
-              backgroundColor: "#eef6f8",
-              borderRadius: "12px",
-              padding: "18px",
-              flex: "1 1 220px",
-              borderTop: "4px solid #e9a23b"
-            }}
-          >
-            <h3 style={{
-              color: "#176b87",
-              marginTop: 0
-            }}>
-              {ejemplo.titulo}
-            </h3>
+      <p style={{ color: "#7c2d12", marginBottom: "20px" }}>
+        Estos ejemplos sirven como orientación para comprender mejor el
+        trabajo de cada semana. Pueden utilizarlos como inspiración para
+        desarrollar sus propias ideas.
+      </p>
 
-            <p style={{
-              color: "#4d5b63",
-              lineHeight: "1.6",
-              marginBottom: 0
-            }}>
-              {ejemplo.descripcion}
-            </p>
-          </motion.article>
-        ))}
-      </div>
-    </section>
+      {ejemplos.length > 0 ? (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
+            gap: "15px",
+          }}
+        >
+          {ejemplos.map((ejemplo, index) => (
+            <motion.article
+              key={`${ejemplo.titulo}-${index}`}
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                background: "#ffffff",
+                borderRadius: "12px",
+                padding: "17px",
+                border: "1px solid #fed7aa",
+                boxShadow: "0 3px 10px rgba(0,0,0,0.05)",
+              }}
+            >
+              <div style={{ fontSize: "1.8rem", marginBottom: "8px" }}>
+                {ejemplo.icono || "📌"}
+              </div>
+
+              <h3
+                style={{
+                  color: "#c2410c",
+                  fontSize: "1.05rem",
+                  margin: "0 0 8px 0",
+                }}
+              >
+                {ejemplo.titulo}
+              </h3>
+
+              <p
+                style={{
+                  color: "#44403c",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                {ejemplo.descripcion}
+              </p>
+            </motion.article>
+          ))}
+        </div>
+      ) : (
+        <p style={{ color: "#7c2d12" }}>
+          No hay ejemplos disponibles para esta semana.
+        </p>
+      )}
+    </motion.section>
   );
 }
 

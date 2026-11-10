@@ -1,42 +1,55 @@
+
 import { motion } from "framer-motion";
 
-function ActividadItem({ actividad, completada, onCompletar, guardando }) {
+function ActividadItem({
+  actividad,
+  completada,
+  onCompletar,
+  guardando
+}) {
   return (
     <motion.article
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -6, scale: 1.015 }}
       transition={{ duration: 0.2 }}
       style={{
-        backgroundColor: "white",
-        border: completada ? "2px solid #2a9d8f" : "1px solid #e1e5e8",
-        borderRadius: "14px",
-        padding: "18px",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+        backgroundColor: completada ? "#e5f8f1" : "white",
+        border: completada ? "2px solid #36b58b" : "1px solid #e1e8ed",
+        borderTop: `6px solid ${completada ? "#36b58b" : "#f4a340"}`,
+        borderRadius: "17px",
+        padding: "20px",
+        boxShadow: "0 6px 16px rgba(30,60,80,0.08)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        gap: "15px"
+        gap: "18px",
+        minHeight: "230px"
       }}
     >
       <div>
         <span style={{
-          color: "#176b87",
-          fontSize: "13px",
+          backgroundColor: completada ? "#c7f0df" : "#fff0d6",
+          color: completada ? "#167653" : "#a65b12",
+          padding: "6px 11px",
+          borderRadius: "20px",
+          fontSize: "12px",
           fontWeight: "bold"
         }}>
-          ACTIVIDAD {actividad.numero}
+          {completada ? "✓ COMPLETADA" : `ACTIVIDAD ${actividad.numero}`}
         </span>
 
         <h3 style={{
-          color: "#183b56",
-          margin: "8px 0"
+          color: "#174c67",
+          margin: "16px 0 9px",
+          fontSize: "18px"
         }}>
           {actividad.titulo}
         </h3>
 
         <p style={{
-          color: "#5c6770",
-          lineHeight: "1.5",
-          margin: 0
+          color: "#5c6972",
+          lineHeight: "1.6",
+          margin: 0,
+          fontSize: "14px"
         }}>
           {actividad.descripcion}
         </p>
@@ -46,11 +59,13 @@ function ActividadItem({ actividad, completada, onCompletar, guardando }) {
         onClick={onCompletar}
         disabled={completada || guardando}
         style={{
-          backgroundColor: completada ? "#2a9d8f" : "#176b87",
+          background: completada
+            ? "#36b58b"
+            : "linear-gradient(90deg, #f4a340, #f27b50)",
           color: "white",
           border: "none",
           padding: "12px",
-          borderRadius: "9px",
+          borderRadius: "10px",
           fontWeight: "bold",
           cursor: completada || guardando ? "default" : "pointer",
           opacity: guardando ? 0.7 : 1
@@ -59,7 +74,7 @@ function ActividadItem({ actividad, completada, onCompletar, guardando }) {
         {guardando
           ? "Guardando..."
           : completada
-            ? "✓ Actividad completada"
+            ? "✓ Trabajo registrado"
             : "Marcar como completada"}
       </button>
     </motion.article>

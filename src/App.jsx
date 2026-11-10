@@ -7,6 +7,7 @@ import ObjetivosCard from "./components/ObjetivosCard";
 import ActividadItem from "./components/ActividadItem";
 import Ejemplos from "./components/Ejemplos";
 import EvaluacionForm from "./components/EvaluacionForm";
+import GuiaMediacion from "./components/GuiaMediacion";
 
 const URL_NOCODB = import.meta.env.VITE_NOCODB_URL;
 const TOKEN_NOCODB = import.meta.env.VITE_NOCODB_TOKEN;
@@ -94,7 +95,6 @@ const actividadesPorSemana = [
       },
     ],
   },
-
   {
     numero: 2,
     titulo: "De la empresa",
@@ -176,12 +176,10 @@ const actividadesPorSemana = [
       },
     ],
   },
-
   {
     numero: 3,
     titulo: "De los métodos publicitarios",
     descripcion: "Selección y diseño de estrategias publicitarias.",
-
     tecnologia: {
       titulo: "Aplicación de TECNOLOGÍA",
       descripcion:
@@ -190,7 +188,6 @@ const actividadesPorSemana = [
       actividad:
         "Diseñar en Canva al menos una pieza publicitaria digital para promocionar el producto de la empresa.",
     },
-
     actividades: [
       {
         numero: 1,
@@ -211,7 +208,6 @@ const actividadesPorSemana = [
           "Establecer un objetivo para cada uno de los métodos publicitarios seleccionados.",
       },
     ],
-
     ejemplos: [
       {
         icono: "📱",
@@ -239,7 +235,6 @@ const actividadesPorSemana = [
       },
     ],
   },
-
   {
     numero: 4,
     titulo: "De los aspectos financieros",
@@ -285,7 +280,6 @@ const actividadesPorSemana = [
       },
     ],
   },
-
   {
     numero: 5,
     titulo: "Impacto social y ambiental",
@@ -732,6 +726,8 @@ function App() {
                 </div>
 
                 <Ejemplos ejemplos={semanaActual.ejemplos} />
+
+                {semanaActual.numero === 3 && <GuiaMediacion />}
               </motion.section>
             )}
           </>
